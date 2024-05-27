@@ -1,0 +1,46 @@
+/* Estilos adicionales si es necesario */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    text-align: center;
+    margin: 0;
+}
+
+h2 {
+    color: #333;
+    margin-top: 120px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px; /* Agregué margen inferior */
+}
+
+.main-content {
+    padding-left: 6em;
+    padding-right: 6em;
+    margin-top: 50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    padding-bottom: 5em;
+}
+
+p {
+    color: #666;
+    font-size: 18px;
+}
+
+.tabla {
+    width: 100%; /* Opcional: ancho completo */
+    border-collapse: collapse; /* Colapsar bordes de la tabla */
+}
+
+.tabla th, .tabla td {
+    border: 1px solid #ddd; /* Bordes entre celdas */
+    padding: 8px; /* Espacio interno */
+    text-align: center; /* Centrar texto */
+}
+
+.fila {
+    background-color: #4caf50; /* Color de fondo para la primera fila */
+    color: white;
+    font-weight: bold; /* Texto en negrita */
+}

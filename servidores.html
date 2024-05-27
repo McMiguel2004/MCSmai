@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="es">
+
+
+<head>
+   <meta charset="UTF-8">
+   <title>Lista de Servidores</title>
+   <link rel="stylesheet" href="css/servidores.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10">
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+
+<body>
+
+
+   <menu></menu>
+   <h1>Servidores</h1>
+
+
+   <!-- Botón para mostrar el formulario de nuevo servidor -->
+   <button id="botonCrear" onclick="mostrarFormulario()">Crear Servidor</button>
+
+
+   <!-- Formulario para crear un nuevo servidor -->
+   <div id="nuevoServidorForm">
+       <h2>Crear Nuevo Servidor</h2>
+       <label for="nombreServidor">Nombre del Servidor:</label>
+       <input type="text" id="nombreServidor" required>
+
+
+       <label for="software">Software:</label>
+
+
+       <select id="software" required>
+           <option value="Java">Java (Recomendado)</option>
+           <option value="Forge">Forge</option>
+           <option value="Spigot">Spigot</option>
+           <option value="Bukkit">Bukkit</option>
+       </select>
+
+
+       <label for="version">Versión:</label>
+
+
+       <select id="version" required>
+           <option value="1.20.6">1.20.6 Última versión</option>
+           <option value="1.20.5">1.20.5</option>
+           <option value="1.20.4">1.20.4</option>
+           <option value="1.20.2">1.20.2</option>
+           <option value="1.20.1">1.20.1</option>
+           <option value="1.20">1.20</option>
+           <option value="1.19.4">1.19.4</option>
+           <option value="1.19.3">1.19.3</option>
+           <option value="1.19.2">1.19.2</option>
+           <option value="1.19.1">1.19.1</option>
+           <option value="1.19">1.19</option>
+           <option value="1.18.2">1.18.2 &#9733; (Recomendado con Forge)</option>
+           <option value="1.18.1">1.18.1</option>
+           <option value="1.18">1.18</option>
+           <option value="1.17.1">1.17.1</option>
+           <option value="1.17">1.17</option>
+           <option value="1.16.5">1.16.5</option>
+           <option value="1.16.4">1.16.4</option>
+           <option value="1.16.3">1.16.3</option>
+           <option value="1.16.2">1.16.2</option>
+           <option value="1.16.1">1.16.1</option>
+           <option value="1.16">1.16</option>
+           <option value="1.15.2">1.15.2</option>
+           <option value="1.15.1">1.15.1</option>
+           <option value="1.15">1.15</option>
+           <option value="1.14.4">1.14.4</option>
+           <option value="1.14.3">1.14.3</option>
+           <option value="1.14.2">1.14.2</option>
+           <option value="1.14.1">1.14.1</option>
+           <option value="1.14">1.14</option>
+           <option value="1.13.2">1.13.2</option>
+           <option value="1.13.1">1.13.1</option>
+           <option value="1.13">1.13</option>
+           <option value="1.12.2">1.12.2 &#9733; (Recomendado con Forge)</option>
+           <option value="1.12.1">1.12.1</option>
+           <option value="1.12">1.12</option>
+           <option value="1.11.2">1.11.2</option>
+           <option value="1.11.1">1.11.1</option>
+           <option value="1.11">1.11</option>
+           <option value="1.10.2">1.10.2</option>
+           <option value="1.10.1">1.10.1</option>
+           <option value="1.10">1.10</option>
+           <option value="1.9.4">1.9.4</option>
+           <option value="1.9.3">1.9.3</option>
+           <option value="1.9.2">1.9.2</option>
+           <option value="1.9.1">1.9.1</option>
+           <option value="1.9">1.9</option>
+           <option value="1.8.9">1.8.9</option>
+           <option value="1.8.8">1.8.8</option>
+           <option value="1.8.7">1.8.7</option>
+           <option value="1.8.6">1.8.6</option>
+           <option value="1.8.5">1.8.5</option>
+           <option value="1.8.4">1.8.4</option>
+           <option value="1.8.3">1.8.3</option>
+           <option value="1.8.2">1.8.2</option>
+           <option value="1.8.1">1.8.1</option>
+           <option value="1.8">1.8</option>
+       </select>
+
+
+
+
+
+
+
+
+    
+       <div id="toggleOpcionesAvanzadas" onclick="toggleOpcionesAvanzadas()">
+           <span>Opciones avanzadas</span>
+           <i id="iconoFlecha" class="fa fa-chevron-down"></i>
+       </div>
+  
+       <div id="opcionesAvanzadas" style="display: none;">
+           <h3>Opciones Avanzadas</h3>
+           <!-- Añade aquí más campos de formulario para las opciones avanzadas -->
+           <label for="maxPlayers">Máximo de Jugadores:</label>
+           <input type="number" id="maxPlayers" min="1" max="100" value="20">
+  
+           <label for="difficulty">Dificultad:</label>
+           <select id="difficulty">
+               <option value="peaceful">Pacífica</option>
+               <option value="easy">Fácil</option>
+               <option value="normal">Normal</option>
+               <option value="hard">Difícil</option>
+           </select>
+       </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+       <button class='button1' onclick="guardarNuevoServidor()">Guardar Servidor</button>
+       <button class='button2' onclick="cerrarFormulario()">Cerrar</button>
+     
+   </div>
+
+
+
+
+   <!-- Lista de Servidores -->
+   <div id="listaServidores">
+       <h2>Lista de Servidores</h2>
+       <table>
+           <thead>
+               <tr>
+                   <!-- <th>ID</th> -->
+                   <th>Nombre del Servidor</th>
+                   <th>Software</th>
+                   <th>Versión</th>
+                   <th>Dirección IP</th>
+                   <th>Estado</th>
+                   <th class="Acciones">Acciones</th>
+               </tr>
+           </thead>
+           <tbody id="tbodyServidores">
+               <!-- Aquí se mostrarán los servidores -->
+           </tbody>
+       </table>
+
+
+
+
+   </div>
+
+
+
+
+
+
+
+
+   <div id="modalSubirMods" style="display: none;">
+       <h2>Subir Mods</h2>
+       <input type="file" id="inputArchivoMods" multiple>
+       <button onclick="subirArchivoMods()">Subir</button>
+       <button onclick="cerrarModal()">Cerrar</button>
+   </div>
+  
+
+
+
+
+  
+   <script>
+       // Función para mostrar el formulario de nuevo servidor y ocultar el botón
+       function mostrarFormulario() {
+           $('#botonCrear').hide();
+           $('#nuevoServidorForm').slideDown();
+       }
+
+
+       function cerrarFormulario() {
+           $('#nuevoServidorForm').slideUp(); // Oculta el formulario usando slideUp()
+           $('#botonCrear').show(); // Muestra el botón "Crear Servidor"
+       }    
+
+
+       // Función para guardar un nuevo servidor.
+       function guardarNuevoServidor() {
+           var nombreServidor = $('#nombreServidor').val();   
+           var software = $('#software').val();
+           var version = $('#version').val();
+           var maxPlayers = $('#maxPlayers').val(); 
+           var difficulty = $('#difficulty').val(); 
+
+
+
+           $.ajax({
+               type: 'POST',
+               url: 'guardar_servidor.php',
+               data: JSON.stringify({
+                   nombreServidor: nombreServidor,
+                   software: software,
+                   version: version,
+                   maxPlayers: maxPlayers, // Nuevo campo
+                   difficulty: difficulty // Nuevo campo
+               }),
+               contentType: 'application/json',
+               success: function (response) {
+                   var result = JSON.parse(response);
+                   if (result.success) {
+                       // Alerta de éxito con SweetAlert2
+                       Swal.fire({
+                           icon: 'success',
+                           title: 'Éxito',
+                           text: 'Servidor creado con éxito',
+                           allowOutsideClick: false,
+                           confirmButtonColor: '#3085d6',
+                           confirmButtonText: 'Ok'
+                       }).then((result) => {
+                           if (result.isConfirmed) {
+                               cargarServidores(); // Recargar la lista de servidores.
+                               $('#nuevoServidorForm').slideUp(); // Ocultar el formulario.
+                               $('#botonCrear').show(); // Mostrar el botón nuevamente.
+                           }
+                       });
+                   } else {
+                       // Alerta de error con SweetAlert2
+                       Swal.fire({
+                           icon: 'error',
+                           title: 'Error',
+                           text: 'Error al crear el servidor: ' + result.message,
+                           allowOutsideClick: false,
+                           confirmButtonColor: '#3085d6',
+                           confirmButtonText: 'Ok'
+                       });
+                   }
+               },
+               error: function () {
+                   // Alerta de error de conexión con SweetAlert2
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error de conexión al servidor',
+                       text: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
+                       allowOutsideClick: false,
+                       confirmButtonColor: '#3085d6',
+                       confirmButtonText: 'Ok'
+                   });
+               }
+           });
+       }
+
+
+
+
+       // Función para iniciar un nuevo servidor.
+       function iniciarServidor(servidorId) {
+           // Mostrar alerta de carga
+           Swal.fire({
+               title: 'Iniciando el servidor...',
+               text: 'Por favor, espere un momento.',
+               allowOutsideClick: false,
+               didOpen: () => {
+                   Swal.showLoading();
+               }
+           });
+
+
+           // Enviar solicitud AJAX para iniciar el servidor.
+           $.ajax({
+               type: 'POST',
+               url: 'iniciar_servidor.php',
+               data: JSON.stringify({ servidorId: servidorId }),
+               contentType: 'application/json',
+               success: function (response) {
+                   // Después de 60 segundos, mostrar el resultado
+                   setTimeout(function () {
+                       var result = JSON.parse(response);
+                       if (result.success) {
+                           // Alerta de éxito con SweetAlert2
+                           Swal.fire({
+                               icon: 'success',
+                               title: 'Éxito',
+                               text: 'Servidor iniciado correctamente',
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           }).then((result) => {
+                               if (result.isConfirmed) {
+                                   cargarServidores(); // Recargar la lista de servidores.
+                               }
+                           });
+                       } else {
+                           // Alerta de error con SweetAlert2
+                           Swal.fire({
+                               icon: 'error',
+                               title: 'Error',
+                               text: 'Error al iniciar el servidor: ' + result.message,
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           });
+                       }
+                   }, 60000); // Mostrar resultado después de 60 segundos
+               },
+               error: function () {
+                   // Alerta de error de conexión con SweetAlert2
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error de conexión al servidor',
+                       text: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
+                       allowOutsideClick: false,
+                       confirmButtonColor: '#3085d6',
+                       confirmButtonText: 'Ok'
+                   });
+               }
+           });
+       }
+
+
+
+
+       // Función para eliminar el servidor
+       function eliminarServidor(servidorId) {
+           // Mostrar alerta de carga
+           Swal.fire({
+               title: 'Eliminando el servidor...',
+               text: 'Por favor, espere un momento.',
+               allowOutsideClick: false,
+               didOpen: () => {
+                   Swal.showLoading();
+               }
+           });
+
+
+           // Enviar solicitud AJAX para eliminar el servidor.
+           $.ajax({
+               type: 'POST',
+               url: 'eliminar_servidor.php',
+               data: JSON.stringify({ servidorId: servidorId }),
+               contentType: 'application/json',
+               success: function (response) {
+                   // Después de 6 segundos, mostrar el resultado
+                   setTimeout(function () {
+                       var result = JSON.parse(response);
+                       if (result.success) {
+                           // Alerta de éxito con SweetAlert2
+                           Swal.fire({
+                               icon: 'success',
+                               title: 'Éxito',
+                               text: 'Servidor eliminado correctamente',
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           }).then((result) => {
+                               if (result.isConfirmed) {
+                                   cargarServidores(); // Recargar la lista de servidores.
+                               }
+                           });
+                       } else {
+                           // Alerta de error con SweetAlert2
+                           Swal.fire({
+                               icon: 'error',
+                               title: 'Error',
+                               text: 'Error al eliminar el servidor: ' + result.message,
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           });
+                       }
+                   }, 6000); // Mostrar resultado después de 6 segundos
+               },
+               error: function () {
+                   // Alerta de error de conexión con SweetAlert2
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error de conexión al servidor',
+                       text: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
+                       allowOutsideClick: false,
+                       confirmButtonColor: '#3085d6',
+                       confirmButtonText: 'Ok'
+                   });
+               }
+           });
+       }
+
+
+
+
+       // Función para detener el servidor
+       function apagarServidor(servidorId) {
+           // Mostrar alerta de carga
+           Swal.fire({
+               title: 'Deteniendo el servidor...',
+               text: 'Por favor, espere un momento.',
+               allowOutsideClick: false,
+               didOpen: () => {
+                   Swal.showLoading();
+               }
+           });
+
+
+           // Enviar solicitud AJAX para detener el servidor.
+           $.ajax({
+               type: 'POST',
+               url: 'apagar_servidor.php',
+               data: JSON.stringify({ servidorId: servidorId }),
+               contentType: 'application/json',
+               success: function (response) {
+                   // Después de 3 segundos, mostrar el resultado
+                   setTimeout(function () {
+                       var result = JSON.parse(response);
+                       if (result.success) {
+                           // Alerta de éxito con SweetAlert2
+                           Swal.fire({
+                               icon: 'success',
+                               title: 'Éxito',
+                               text: 'Servidor detenido correctamente',
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           }).then((result) => {
+                               if (result.isConfirmed) {
+                                   cargarServidores(); // Recargar la lista de servidores.
+                               }
+                           });
+                       } else {
+                           // Alerta de error con SweetAlert2
+                           Swal.fire({
+                               icon: 'error',
+                               title: 'Error',
+                               text: 'Error al detener el servidor: ' + result.message,
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           });
+                       }
+                   },3000); // Mostrar resultado después de 3 segundos
+               },
+               error: function () {
+                   // Alerta de error de conexión con SweetAlert2
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error de conexión al servidor',
+                       text: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
+                       allowOutsideClick: false,
+                       confirmButtonColor: '#3085d6',
+                       confirmButtonText: 'Ok'
+                   });
+               }
+           });
+       }
+
+
+
+
+       // Función para reiniciar el servidor
+       function reiniciarServidor(servidorId) {
+           // Mostrar alerta de carga
+           Swal.fire({
+               title: 'Reiniciando el servidor...',
+               text: 'Por favor, espere un momento.',
+               allowOutsideClick: false,
+               didOpen: () => {
+                   Swal.showLoading();
+               }
+           });
+
+
+           // Enviar solicitud AJAX para reiniciar el servidor
+           $.ajax({
+               type: 'POST',
+               url: 'reiniciar_servidor.php',
+               data: JSON.stringify({ servidorId: servidorId }),
+               contentType: 'application/json',
+               success: function (response) {
+                   // Después de 60 segundos, mostrar el resultado
+                   setTimeout(function () {
+                       var result = JSON.parse(response);
+                       if (result.success) {
+                           // Alerta de éxito con SweetAlert2
+                           Swal.fire({
+                               icon: 'success',
+                               title: 'Éxito',
+                               text: 'Servidor reiniciado correctamente',
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           }).then((result) => {
+                               if (result.isConfirmed) {
+                                   cargarServidores(); // Recargar la lista de servidores.
+                               }
+                           });
+                       } else {
+                           // Alerta de error con SweetAlert2
+                           Swal.fire({
+                               icon: 'error',
+                               title: 'Error',
+                               text: 'Error al reiniciar el servidor: ' + result.message,
+                               allowOutsideClick: false,
+                               confirmButtonColor: '#3085d6',
+                               confirmButtonText: 'Ok'
+                           });
+                       }
+                   }, 30000); // Mostrar resultado después de 60 segundos
+               },
+               error: function () {
+                   // Alerta de error de conexión con SweetAlert2
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error de conexión al servidor',
+                       text: 'Tu sesión ha expirado. Por favor, inicia sesión nuevamente.',
+                       allowOutsideClick: false,
+                       confirmButtonColor: '#3085d6',
+                       confirmButtonText: 'Ok'
+                   });
+               }
+           });
+       }
+
+
+
+
+
+       // Función para cargar los servidores desde el servidor.
+       function cargarServidores() {
+           // Realizar una solicitud AJAX para obtener los servidores.
+           $.ajax({
+               type: 'GET',
+               url: 'obtener_servidores.php',
+               success: function (response) {
+                   // Parsear la respuesta JSON.
+                   var servidores = JSON.parse(response);
+
+
+                   // Limpiar la tabla antes de agregar nuevos datos.
+                   $('#tbodyServidores').empty();
+
+
+                   // Iterar sobre los servidores y agregarlos a la tabla.
+                   for (var i = 0; i < servidores.length; i++) {
+                       var servidor = servidores[i];
+                       var botonesHTML = '';
+
+
+
+
+              
+                       // Determinar qué botones mostrar según el estado y el software del servidor
+                       if (servidor.estado === 'Detenido') {
+                               botonesHTML = '<button class="boton-iniciar-servidor" onclick="iniciarServidor(' + servidor.id + ')"> <i class="fas fa-play-circle"></i> Iniciar</button>' +
+                               '<button class="boton-parar-servidor" onclick="eliminarServidor(' + servidor.id + ')"><i class="fas fa-trash-alt"></i></button>';
+
+
+                             
+                           } else if (servidor.estado === 'Activo') {
+                               botonesHTML = '<button class="boton-parar-servidor" onclick="apagarServidor(' + servidor.id + ')"><i class="fas fa-power-off"></i> Apagar</button>' +
+                               '<button class="boton-reiniciar-servidor" onclick="reiniciarServidor(' + servidor.id + ')"><i class="fas fa-sync-alt"></i> Reiniciar</button>';
+
+
+                               // Verificar si el software del servidor es Forge y la versión es 1.18.2
+                               if (servidor.software === 'Forge') {
+                                   botonesHTML += '<button class="boton-iniciar-servidor" onclick="mostrarVentanaSubirArchivos(' + servidor.id + ')"><i class="fas fa-cloud-upload-alt"></i> Mods </button>';
+                               } else if (servidor.software === 'Bukkit' || servidor.software === 'Spigot') {
+                                   botonesHTML += '<button class="boton-iniciar-servidor" onclick="mostrarVentanaSubirArchivos(' + servidor.id + ')"><i class="fas fa-cloud-upload-alt"></i> Plugins</button>';
+                               }
+                           }
+
+
+                           //<i class="fas fa-terminal"></i>
+
+
+
+
+                       var direccionIPPuerto = servidor.ip_address + ':' + servidor.puerto;
+
+
+                       var row = '<tr>' +
+                           // '<td>' + servidor.id + '</td>' +
+                           '<td>' + servidor.nombre + '</td>' +
+                           '<td>' + servidor.software + '</td>' +
+                           '<td>' + servidor.version + '</td>' +
+                           '<td>' + direccionIPPuerto + '</td>' +
+                           '<td>' + servidor.estado + '</td>' +
+                           '<td class="centrar-boton" >' +
+                           botonesHTML +
+                           '</td>' +
+                           '</tr>';
+                       $('#tbodyServidores').append(row);
+                   }
+               },
+               error: function () {
+                   // Alerta con estilo personalizado para el error
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error al cargar los servidores',
+                       text: 'Hubo un problema al cargar los servidores. Por favor, vuelva a iniciar sesión.',
+                       allowOutsideClick: false,
+                       confirmButtonColor: '#3085d6',
+                       confirmButtonText: 'Ok'
+                   }).then((result) => {
+                       // Redireccionar a index.html después de cerrar la alerta
+                       if (result.isConfirmed || result.dismiss === Swal.DismissReason.backdrop || result.dismiss === Swal.DismissReason.esc) {
+                           window.location.href = 'index.html';
+                       }
+                   });
+               }
+           });
+       }
+
+
+       // Llamada a la función para cargar los servidores al cargar la página.
+       $(document).ready(function () {
+           cargarServidores();
+       });
+
+
+
+
+       function mostrarVentanaSubirArchivos(servidorId) {
+           Swal.fire({
+               title: 'Seleccionar archivo',
+               input: 'file',
+               inputAttributes: {
+                   'accept': '.jar,.zip', // Limitar los tipos de archivos aceptados
+                   'aria-label': 'Subir archivo'
+               },
+               confirmButtonText: 'Subir',
+               showCancelButton: true,
+               cancelButtonText: 'Cancelar',
+               showLoaderOnConfirm: true,
+               preConfirm: (file) => {
+                   return subirArchivo(servidorId, file);
+               }
+           }).then((result) => {
+               if (result.isConfirmed) {
+                   Swal.fire({
+                       icon: 'success',
+                       title: 'Éxito',
+                       text: 'Archivo subido correctamente'
+                   });
+               }
+           });
+       }
+
+
+
+
+function subirArchivo(servidorId, file) {
+   return new Promise((resolve, reject) => {
+       var formData = new FormData();
+       formData.append('archivo', file);
+       formData.append('servidorId', servidorId);
+
+
+       // Realizar una solicitud AJAX POST al script PHP subir_archivo.php
+       $.ajax({
+           type: 'POST',
+           url: 'subir_archivo.php',
+           data: formData,
+           processData: false,
+           contentType: false,
+           success: function (response) {
+               var result = JSON.parse(response);
+               if (result.success) {
+                   resolve(result);
+               } else {
+                   Swal.fire({
+                       icon: 'error',
+                       title: 'Error',
+                       text: 'Error al subir el archivo: ' + result.message
+                   });
+                   reject(result);
+               }
+           },
+           error: function () {
+               Swal.fire({
+                   icon: 'error',
+                   title: 'Error',
+                   text: 'Error al subir el archivo. Por favor, inténtalo de nuevo más tarde.'
+               });
+               reject();
+           }
+       });
+   });
+}
+
+
+// Función para subir archivos de mods
+function subirArchivoMods() {
+   var servidorId = obtenerServidorId(); // Debes implementar la lógica para obtener el servidorId
+   var inputArchivoMods = document.getElementById('inputArchivoMods');
+   var archivos = inputArchivoMods.files;
+
+
+   if (archivos.length === 0) {
+       alert('Por favor selecciona al menos un archivo para subir.');
+       return;
+   }
+
+
+   var formData = new FormData();
+   for (var i = 0; i < archivos.length; i++) {
+       formData.append('archivo[]', archivos[i]);
+   }
+   formData.append('servidorId', servidorId);
+
+
+   // Realizar una solicitud AJAX para enviar los archivos al servidor
+   $.ajax({
+       type: 'POST',
+       url: 'subir_archivo.php',
+       data: formData,
+       processData: false,
+       contentType: false,
+       success: function(response) {
+           // Manejar la respuesta del servidor
+           console.log(response);
+           var data = JSON.parse(response);
+           if (data.success) {
+               // Mostrar alerta con SweetAlert2
+               Swal.fire({
+                   icon: 'success',
+                   title: 'Archivo subido correctamente adadasdds',
+                   text: data.message, // Incluir el mensaje adicional
+                   confirmButtonText: 'Ok'
+               });
+           } else {
+               // Mostrar alerta con SweetAlert2
+               Swal.fire({
+                   icon: 'error',
+                   title: 'Error',
+                   text: 'Error al subir los archivos. Por favor, inténtalo de nuevo más tarde.',
+                   confirmButtonText: 'Ok'
+               });
+           }
+       },
+       error: function() {
+           // Mostrar alerta con SweetAlert2
+           Swal.fire({
+               icon: 'error',
+               title: 'Error',
+               text: 'Error al subir los archivos. Por favor, inténtalo de nuevo más tarde.',
+               confirmButtonText: 'Ok'
+           });
+       }
+   });
+}
+
+
+
+// Función para alternar la visibilidad de las opciones avanzadas y cambiar el icono.
+function toggleOpcionesAvanzadas() {
+   $('#opcionesAvanzadas').slideToggle();
+   var icono = $('#iconoFlecha');
+   if (icono.hasClass('fa-chevron-down')) {
+       icono.removeClass('fa-chevron-down').addClass('fa-chevron-up');
+   } else {
+       icono.removeClass('fa-chevron-up').addClass('fa-chevron-down');
+   }
+}
+
+
+
+
+   </script>
+   <!-- <footer></footer> -->
+</body>
+<script type="text/javascript" src="main.js"></script>
+
+
+</html>
+
+
+

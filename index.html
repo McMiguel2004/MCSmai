@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+</head>
+
+<body>
+
+    <h2>Iniciar Sesión</h2>
+
+    <form id="login-form" action="procesar_iniciar_sesion.php" method="post">
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" required>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" name="contrasena" required>
+
+        <button id="login-button" type="button">Iniciar Sesión</button>
+    </form>
+
+    <p>¿No tienes cuenta? <a href="registrar.html">Regístrate aquí</a>.</p>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', function () {
+            // Realizar una petición asíncrona para procesar el inicio de sesión
+            fetch('procesar_iniciar_sesion.php', {
+                method: 'POST',
+                body: new FormData(document.getElementById('login-form'))
+            })
+                .then(response => response.text())
+                .then(data => {
+                    // Verificar la respuesta y mostrar una alerta de SweetAlert2 si hay un error
+                    if (data === 'success') {
+                        // Redirigir a la página de inicio si el inicio de sesión es exitoso
+                        window.location.href = 'inicio.html';
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: data,
+                            allowOutsideClick: false
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    // Mostrar una alerta de SweetAlert2 en caso de error en la solicitud
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'Hubo un problema al iniciar sesión. Por favor, intenta de nuevo más tarde.',
+                        allowOutsideClick: false
+                    });
+                });
+        });
+    </script>
+
+</body>
+
+</html>
